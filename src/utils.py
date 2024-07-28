@@ -83,7 +83,7 @@ def filter_transactions_by_card(df_transactions: pd.DataFrame) -> list[dict]:
     expenses_cards = []
     for card, expenses in cards_dict.items():
         expenses_cards.append(
-            {"last_digits": card[-4:], "total spent": abs(expenses), "cashback": abs(round(expenses / 100, 2))}
+            {"last_digits": card[-4:], "total_spent": abs(expenses), "cashback": abs(round(expenses / 100, 2))}
         )
     return expenses_cards
 
