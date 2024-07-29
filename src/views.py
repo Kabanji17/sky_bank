@@ -2,7 +2,6 @@ import json
 
 from src.utils import (
     read_xls_file,
-    xls_to_dict,
     setting_log,
     greetings,
     filter_transactions_by_date,
@@ -23,9 +22,8 @@ def generate_json_response(file_path, input_date):
     user_stocks = user_settings["user_stocks"]
 
     greeting = greetings()
-    transactions = xls_to_dict(file_path)
     df_transactions = read_xls_file(file_path)
-    sorted_transactions = filter_transactions_by_date(transactions, input_date)
+    sorted_transactions = filter_transactions_by_date(df_transactions, input_date)
     cards_operations = filter_transactions_by_card(df_transactions)
     top_transactions = get_top_five_transactions(sorted_transactions)
     currency_rates = fetch_exchange_rates(user_currencies)

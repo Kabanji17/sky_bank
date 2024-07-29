@@ -32,12 +32,6 @@ def read_xls_file(file_path: str) -> pd.DataFrame:
     return df
 
 
-def xls_to_dict(file_path: str) -> list[dict]:
-    """Функция преобразования датафрейма транзакций в список словарь"""
-    df = read_xls_file(file_path)
-    transactions = df.to_dict(orient="records")
-    return transactions
-
 
 def greetings() -> str:
     """Функция приветствия по времени суток"""
@@ -52,22 +46,30 @@ def greetings() -> str:
         return "Доброй ночи"
 
 
-def filter_transactions_by_date(transactions: list[dict], end_date: str = datetime.now()) -> list[dict]:
-    """Функция, фильтрующая данные транзакций по дате, вводимый формат даты %d.%m.%Y %H:%M:%S"""
-    if end_date:
+def filter_transactions_by_date(transactions: pd.DataFrame, end_date: str = None) -> pd.DataFrame:
+    """Функция, фильтрующая данные транзакций по дате.
+    Вводимый формат даты: %d.%m.%Y %H:%M:%S.
+    Возвращает DataFrame с отфильтрованными транзакциями."""
+
+    if end_date is None:
+        end_date_time = datetime.now()
+    else:
         try:
             end_date_time = datetime.strptime(end_date, "%d.%m.%Y %H:%M:%S")
-        except:
+        except ValueError:
             print("Введена некорректная дата. Будет использована текущая дата")
             end_date_time = datetime.now()
+
     start_date = end_date_time.replace(day=1)
-    filtered_transactions = []
-    for transaction in transactions:
-        transaction_date_str = transaction.get("Дата операции")
-        transaction_date = datetime.strptime(transaction_date_str, "%d.%m.%Y %H:%M:%S")
-        if start_date <= transaction_date <= end_date_time:
-            filtered_transactions.append(transaction)
-    return filtered_transactions
+
+    # Преобразуем столбец 'Дата операции' в формат datetime
+    transactions['Дата операции'] = pd.to_datetime(transactions['Дата операции'], format="%d.%m.%Y %H:%M:%S")
+
+    # Фильтруем транзакции по дате
+    filtered_transactions = transactions[(transactions['Дата операции'] >= start_date) &
+                                         (transactions['Дата операции'] <= end_date_time)]
+
+    return filtered_transactions.reset_index(drop=True)
 
 
 def filter_transactions_by_card(df_transactions: pd.DataFrame) -> list[dict]:
@@ -88,18 +90,23 @@ def filter_transactions_by_card(df_transactions: pd.DataFrame) -> list[dict]:
     return expenses_cards
 
 
-def get_top_five_transactions(filtered_transactions: list[dict]) -> list[dict]:
-    """Функция, выдающая информацию о ТОП-5 транзакциях по сумме платежа"""
-    top_5_transactions = sorted(filtered_transactions, key=lambda x: x["Сумма операции"], reverse=True)[:5]
+def get_top_five_transactions(filtered_transactions: pd.DataFrame) -> list[dict]:
+    """Функция, выдающая информацию о ТОП-5 транзакциях по сумме платежа."""
+
+    # Сортируем транзакции по сумме и выбираем топ-5
+    top_5_transactions = filtered_transactions.nlargest(5, 'Сумма операции')
+
+    # Создаем список словарей с нужными данными
     top_list = []
-    for transaction in top_5_transactions:
+    for _, transaction in top_5_transactions.iterrows():
         transaction_dict = {
-            "date": transaction["Дата операции"],
-            "amount": transaction["Сумма платежа"],
+            "date": transaction["Дата операции"].strftime("%d.%m.%Y"),
+            "amount": transaction["Сумма операции"],
             "category": transaction["Категория"],
             "description": transaction["Описание"],
         }
         top_list.append(transaction_dict)
+
     return top_list
 
 
@@ -144,11 +151,13 @@ def fetch_stock_prices(stocks: list) -> dict:
 
 
 if __name__ == "__main__":
-    my_transactions = xls_to_dict("../data/operations.xls")
     df_transactions = read_xls_file("../data/operations.xls")
 
+    sortirovka = filter_transactions_by_date(df_transactions)
+    print(get_top_five_transactions(sortirovka))
+
     #print(fetch_exchange_rates(["USD", "EUR"]))
-    print(fetch_stock_prices(["AAPL", "AMZN", "GOOGL", "MSFT", "TSLA"]))
+    #print(fetch_stock_prices(["AAPL", "AMZN", "GOOGL", "MSFT", "TSLA"]))
     #fltr = filter_transactions_by_date(my_transactions)
     # print(process_transactions(my_transactions, date=datetime.now()))
     # print(filter_transactions_by_card(df_transactions))
