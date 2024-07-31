@@ -1,9 +1,9 @@
 import datetime
 import json
 import logging
-from typing import List, Dict, Any
-from src.utils import setting_log, xls_to_dict
+from typing import Any, Dict, List
 
+from src.utils import read_xls_file, setting_log
 
 logger = setting_log("services")
 
@@ -21,12 +21,12 @@ def investment_bank(month: str, transactions: List[Dict[str, Any]], limit: int) 
 
     for transaction in transactions:
         try:
-            transaction_date = datetime.datetime.strptime(transaction['Дата операции'], "%d.%m.%Y %H:%M:%S")
+            transaction_date = datetime.datetime.strptime(transaction["Дата операции"], "%d.%m.%Y %H:%M:%S")
             transaction_date = datetime.datetime.strftime(transaction_date, "%Y-%m-%d")
             transaction_date = datetime.datetime.strptime(transaction_date, "%Y-%m-%d")
             # Проверяем, произошла ли транзакция в указанном месяце
             if transaction_date.year == year_month.year and transaction_date.month == year_month.month:
-                amount = transaction['Сумма операции']
+                amount = transaction["Сумма операции"]
 
                 # Рассчитываем округленную сумму
                 rounded_amount = ((amount + limit - 1) // limit) * limit
@@ -36,7 +36,8 @@ def investment_bank(month: str, transactions: List[Dict[str, Any]], limit: int) 
                 total_saved += saved_amount
 
                 logger.debug(
-                    f"Транзакция на {transaction['Дата операции']} на сумму {amount} ₽, округленная до {rounded_amount} ₽. Сэкономлено: {saved_amount} ₽.")
+                    f"Транзакция на {transaction['Дата операции']} на сумму {amount} ₽, округленная до {rounded_amount} ₽. Сэкономлено: {saved_amount} ₽."
+                )
 
         except ValueError:
             logger.error(f"Дата транзакции должна быть в формате «ГГГГ-ММ-ДД» для транзакции {transaction}.")
@@ -48,7 +49,7 @@ def investment_bank(month: str, transactions: List[Dict[str, Any]], limit: int) 
 
 # Sample usage
 if __name__ == "__main__":
-    transactions = xls_to_dict("../data/operations.xls")
+    transactions = read_xls_file("../data/operations.xls").to_dict(orient="records")
     month = "2024-05"
     limit = 50
     print(f"Total saved: {investment_bank(month, transactions, limit)} ₽")
