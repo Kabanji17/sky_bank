@@ -1,0 +1,54 @@
+2024-08-01 00:30:06,355 utils read_xls_file INFO: Файл успешно открыт
+2024-08-01 00:30:06,437 utils read_xls_file INFO: Файл успешно открыт
+2023-01-01 14:30:00,000 utils greetings INFO: Функция начала свою работу.
+2023-01-01 14:30:00,000 utils greetings INFO: Функция успешно завершила свою работу.
+2023-01-01 19:30:00,000 utils greetings INFO: Функция начала свою работу.
+2023-01-01 19:30:00,000 utils greetings INFO: Функция успешно завершила свою работу.
+2023-01-01 23:30:00,000 utils greetings INFO: Функция начала свою работу.
+2023-01-01 23:30:00,000 utils greetings INFO: Функция успешно завершила свою работу.
+2023-01-02 03:30:00,000 utils greetings INFO: Функция начала свою работу.
+2023-01-02 03:30:00,000 utils greetings INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,191 utils filter_transactions_by_card INFO: Функция начала свою работу.
+2024-08-01 00:30:07,212 utils filter_transactions_by_card INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,213 utils filter_transactions_by_card INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,217 utils filter_transactions_by_card INFO: Функция начала свою работу.
+2024-08-01 00:30:07,221 utils filter_transactions_by_card INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,222 utils filter_transactions_by_card INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,226 utils filter_transactions_by_card INFO: Функция начала свою работу.
+2024-08-01 00:30:07,228 utils filter_transactions_by_card INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,228 utils filter_transactions_by_card INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,232 utils filter_transactions_by_card INFO: Функция начала свою работу.
+2024-08-01 00:30:07,234 utils filter_transactions_by_card INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,234 utils filter_transactions_by_card INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,258 utils get_top_five_transactions INFO: Функция начала свою работу.
+2024-08-01 00:30:07,268 utils get_top_five_transactions INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,274 utils get_top_five_transactions INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,280 utils get_top_five_transactions INFO: Функция начала свою работу.
+2024-08-01 00:30:07,283 utils get_top_five_transactions INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,284 utils get_top_five_transactions INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,290 utils fetch_exchange_rates INFO: Функция начала свою работу.
+2024-08-01 00:30:07,291 utils fetch_exchange_rates INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,291 utils fetch_exchange_rates INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,296 utils fetch_stock_prices INFO: Функция начала свою работу.
+2024-08-01 00:30:07,296 utils fetch_stock_prices INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,297 utils fetch_stock_prices INFO: {'Global Quote': {'05. price': 150.0}}
+2024-08-01 00:30:07,297 utils fetch_stock_prices INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,310 utils greetings INFO: Функция начала свою работу.
+2024-08-01 00:30:07,310 utils greetings INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,310 utils filter_transactions_by_date INFO: Функция начала свою работу.
+2024-08-01 00:30:07,311 utils filter_transactions_by_date ERROR: Введена некорректная дата. Будет использована текущая дата
+2024-08-01 00:30:07,313 utils filter_transactions_by_date INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,318 utils filter_transactions_by_date INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,318 utils filter_transactions_by_card INFO: Функция начала свою работу.
+2024-08-01 00:30:07,322 utils filter_transactions_by_card INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,322 utils filter_transactions_by_card INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,323 utils get_top_five_transactions INFO: Функция начала свою работу.
+2024-08-01 00:30:07,326 utils get_top_five_transactions INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:07,326 utils get_top_five_transactions INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:07,327 utils fetch_exchange_rates INFO: Функция начала свою работу.
+2024-08-01 00:30:07,327 utils fetch_exchange_rates INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:08,614 utils fetch_exchange_rates INFO: Функция успешно завершила свою работу.
+2024-08-01 00:30:08,615 utils fetch_stock_prices INFO: Функция начала свою работу.
+2024-08-01 00:30:08,615 utils fetch_stock_prices INFO: Функция обрабатывает данные транзакций.
+2024-08-01 00:30:09,253 utils fetch_stock_prices INFO: {'Global Quote': {'01. symbol': 'AAPL', '02. open': '219.1900', '03. high': '220.3250', '04. low': '216.1200', '05. price': '218.8000', '06. volume': '41643840', '07. latest trading day': '2024-07-30', '08. previous close': '218.2400', '09. change': '0.5600', '10. change percent': '0.2566%'}}
+2024-08-01 00:30:09,612 utils fetch_stock_prices INFO: {'Information': 'Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day. Please subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to instantly remove all daily rate limits.'}
