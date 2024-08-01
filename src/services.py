@@ -1,6 +1,4 @@
 import datetime
-import json
-import logging
 from typing import Any, Dict, List
 
 from src.utils import read_xls_file, setting_log
@@ -36,7 +34,8 @@ def investment_bank(month: str, transactions: List[Dict[str, Any]], limit: int) 
                 total_saved += saved_amount
 
                 logger.debug(
-                    f"Транзакция на {transaction['Дата операции']} на сумму {amount} ₽, округленная до {rounded_amount} ₽. Сэкономлено: {saved_amount} ₽."
+                    f"Транзакция на {transaction['Дата операции']} на сумму {amount} ₽,"
+                    f"округленная до {rounded_amount} ₽. Сэкономлено: {saved_amount} ₽."
                 )
 
         except ValueError:

@@ -1,14 +1,10 @@
-import json
 import os
-from datetime import datetime
 from unittest.mock import mock_open, patch
 
 import pandas as pd
 import pytest
 
-from src.reports import filter_transactions_by_category, save_to_file_decorator, spending_by_category
-
-# Предполагается, что декоратор и функция уже импортированы
+from src.reports import spending_by_category
 
 
 @pytest.fixture
